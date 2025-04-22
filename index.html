@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestion & Tri des Déchets</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="index.html">Accueil</a>
+    <a href="details.html">Détails</a>
+    <a href="historique.html">Historique</a>
+    <a href="config.html">Paramètres</a>
+    <a href="login.html">Connexion</a>
+  </div>
+  
+  <span class="openbtn" onclick="openNav()">☰ Menu</span>
+  
+
+  <header>
+    <h1>🌿 CleanOvators </h1>
+    <nav>
+        <h3>Nettoyer l'environnement tout en inovant </h3>
+    </nav>
+  </header>
+
+  <main>
+    <section class="dashboard">
+      <h2>🗑️ État des Poubelles</h2>
+
+      <div class="poubelle-card">
+        <h3>Poubelle 1</h3>
+        <p>Niveau : 42%</p>
+        <p>Statut : ✅ OK</p>
+      </div>
+
+      <div class="poubelle-card full">
+        <h3>Poubelle 2</h3>
+        <p>Niveau : 95%</p>
+        <p>Statut : ⚠️ Presque pleine</p>
+      </div>
+
+      <div class="poubelle-card">
+        <h3>Poubelle 3</h3>
+        <p>Niveau : 18%</p>
+        <p>Statut : ✅ OK</p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 | CleanOvators</p>
+  </footer>
+  <script>
+    function openNav() {
+      document.getElementById("sidebar").style.width = "250px";
+    }
+  
+    function closeNav() {
+      document.getElementById("sidebar").style.width = "0";
+    }
+  </script>
+  
+</body>
+</html>

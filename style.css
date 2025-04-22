@@ -1,0 +1,114 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #2f3542;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  nav {
+    margin-top: 1rem;
+  }
+  
+  nav a {
+    color: #dcdde1;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  nav a:hover {
+    color: #1abc9c;
+  }
+  
+  main {
+    padding: 2rem;
+  }
+  
+  .dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .poubelle-card {
+    background-color: #fff;
+    border-left: 5px solid #2ed573;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    width: 200px;
+  }
+  
+  .poubelle-card.full {
+    border-left: 5px solid #ffa502;
+  }
+  
+  footer {
+    text-align: center;
+    margin: 250px ;
+    padding: 1rem;
+    background-color: #dfe4ea;
+    color: #2f3542;
+  }
+  /* Sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+  }
+  
+  .sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    transition: 0.2s;
+  }
+  
+  .sidebar a:hover {
+    background-color: #575757;
+  }
+  
+  .sidebar .closebtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 36px;
+    color: white;
+  }
+  
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidebar a {
+      font-size: 16px;
+    }
+  }
+  
+  
