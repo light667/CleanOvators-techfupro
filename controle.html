@@ -1,30 +1,53 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gestion & Tri des Déchets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Centre de Contrôle - CleanOvators</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="dark-mode">
 
   <header>
-    <h1>🌿 Centre de Controle - CleanOvators</h1>
+    <h1>🧠 Centre de Contrôle</h1>
     <nav>
       <a href="index.html">Accueil</a>
-      <a href="details.html">Détails</a>
-      <a href="historique.html">Historique</a>
-      <a href="config.html">Paramètres</a>
+      <a href="#">Déconnexion</a>
     </nav>
   </header>
 
   <main>
+    <section class="controle">
+      <h2>🎥 Vidéos en direct</h2>
+      <div class="video-stream">
+        <p>Flux caméra (simulation)</p>
+        <video controls autoplay muted>
+          <source src="videos/tri-simulation.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la lecture vidéo.
+        </video>
+      </div>
+
+      <h2>📂 Historique de Tri</h2>
+      <div class="historique-tri">
+        <ul>
+          <li>22 avril 2025 - 14h10 : Plastique trié</li>
+          <li>22 avril 2025 - 13h55 : Métal trié</li>
+          <li>22 avril 2025 - 13h42 : Papier trié</li>
+        </ul>
+      </div>
+
+      <h2>🔍 Historique de Recherches</h2>
+      <div class="historique-recherche">
+        <ul>
+          <li>Utilisateur X a recherché "Type de plastique recyclable"</li>
+          <li>Utilisateur Y a consulté "Fonctionnement du bras robotique"</li>
+        </ul>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 | Projet IA & Environnement</p>
+    <p>&copy; 2025 | CleanOvators - Centre de Contrôle</p>
   </footer>
-
 </body>
 </html>

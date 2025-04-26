@@ -1,50 +1,138 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f0f4f8;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    background-color: #2f3542;
-    color: white;
-    padding: 1.5rem;
-    text-align: center;
-  }
-  nav {
-    margin-top: 1rem;
-  }
-  
-  nav a {
-    color: #dcdde1;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  nav a:hover {
-    color: #1abc9c;
-  }
-  
-  main {
-    padding: 2rem;
-  }
-  
- 
-  .poubelle-card , .poubelle2 {
-    color: #f0f4f8;
-    margin-left: 10px;
-    margin-top: 50px;
-    background-color: #2f3542;
-    border-left: 5px solid #2ed573;
-    box-shadow: 0 4px 6px rgba(249, 248, 248, 0.937);
-    padding: 1em;
-    border-radius: 8px;
-  }
-  footer {
-    text-align: justify;
-    margin-top: 250px ;
-    color: #2f3542;
-  }
-  
-  
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #121212;
+  color: #fff;
+}
+
+header {
+  background: #1f1f1f;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+h1 {
+  margin: 0;
+  color: #00ff99;
+}
+
+h3 {
+  color: #ccc;
+}
+
+nav {
+  margin-top: 15px;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #00ffcc;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #00ffaa;
+}
+
+main {
+  padding: 40px 20px;
+}
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.poubelle-card, .poubelle2 {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  width: 300px;
+  box-shadow: 0 0 10px #00ffaa33;
+  transition: transform 0.3s;
+}
+
+.poubelle-card:hover, .poubelle2:hover {
+  transform: scale(1.02);
+}
+
+progress {
+  width: 100%;
+  height: 20px;
+}
+
+footer {
+  text-align: center;
+  background: #1f1f1f;
+  padding: 15px;
+  margin-top: 40px;
+  border-top: 1px solid #333;
+  color: #aaa;
+}
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(to bottom, #121212, #1e1e1e);
+  border-bottom: 1px solid #333;
+}
+.hero h1 {
+  font-size: 3em;
+  color: #00ff99;
+}
+.hero p {
+  color: #ccc;
+  font-size: 1.2em;
+}
+.hero .btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: #00ffaa;
+  color: #000;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+.hero .btn:hover {
+  background: #00ffcc;
+}
+body.dark-mode {
+  background-color: #111;
+  color: #eee;
+  font-family: Arial, sans-serif;
+}
+header, footer {
+  background-color: #1c1c1c;
+  padding: 15px;
+  text-align: center;
+}
+nav a {
+  margin: 0 10px;
+  color: #00ffaa;
+  text-decoration: none;
+}
+section.controle {
+  padding: 20px;
+}
+.video-stream video {
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid #00ffaa;
+  border-radius: 10px;
+}
+h2 {
+  margin-top: 40px;
+  color: #00ff99;
+}
+ul {
+  list-style: square;
+  padding-left: 20px;
+}
+
