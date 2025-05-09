@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CleanOvators - Gestion et tri de Dechets</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>CleanOvators - Gestion et tri de Déchets</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
 </head>
 <body>
   <header>
-    <h1>🌿 CleanOvators </h1>
-    <h3>Nettoyer l'environnement tout en inovant </h3>
+    <h1>🌿 CleanOvators</h1>
+    <h3>Nettoyer l'environnement tout en innovant</h3>
     <nav>
-        <a href="index.html">ACCEUIL</a>
-        <a href="admin.html">CENTRE DE CONTROLE</a>
+      <a href="index.html">ACCUEIL</a>
+      <a href="admin.html">CENTRE DE CONTRÔLE</a>
     </nav>
   </header>
 
@@ -33,25 +34,38 @@
     
     <section class="dashboard">
       <h2>🗑️ État des Poubelles</h2>
-      <div class="poubelle-card">
-        <h3>Poubelle 1</h3>
-        <p><strong>Niveau de remplissage :</strong> <progress value="95" max="100"></progress></p>
-        <p><strong>État :</strong> ⚠️ Presque pleine</p>
-        <p>Statut : ✅ACTIF</p>
-        <p><strong>Localisation :</strong> Zone B - Bâtiment principal</p>
-        <p><strong>Dernière vidange :</strong> 18 avril 2025 - 10h32</p>
-        <p><strong>Capacité totale :</strong> 50L</p>
-      </div>
-      <div class="poubelle2">
-        <h3>Poubelle 2</h3>
-        <p>Niveau : 56%</p>
-        <p>Statut : ❌INACTIF</p>
-        <p>Localisation : ZONE A</p>
-      </div>
+      <p>Chargement des données...</p>
     </section>
   </main>
+
   <footer>
-    <p>&copy; 2025 | CleanOvators - Gestion et Tri de dechets</p>
+    <p>&copy; 2025 | CleanOvators - Gestion et Tri de déchets</p>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      Papa.parse('https://docs.google.com/spreadsheets/d/e/2PACX-1vQgmSKQ1_GhPryIvCFtL6qO7YNy26RY5XY76nQo44i3YMplAssikjoJ6EnEOOuV9OC2trobP0kY8zpB/pub?gid=0&single=true&output=csv', {
+        download: true,
+        header: true,
+        complete: function(results) {
+          const data = results.data;
+          const container = document.querySelector(".dashboard");
+          container.innerHTML = '<h2>🗑️ État des Poubelles</h2>';
+  
+          data.forEach(item => {
+            container.innerHTML += `
+              <div class="poubelle-card">
+                <h3>Date : ${item["time"]}</h3>
+                <p><strong>Distance :</strong> ${item["Distance"]} cm</p>
+                <p><strong>Remplissage :</strong> ${item["Pourcentage"]}%</p>
+                <p><strong>Statut :</strong> ${item["Statut"]}</p>
+              </div>
+            `;
+          });
+        }
+      });
+    });
+  </script>
+  
 </body>
 </html>
