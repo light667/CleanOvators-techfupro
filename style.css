@@ -103,6 +103,12 @@ footer {
 .hero .btn:hover {
   background: #00ffcc;
 }
+.apropos {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 body.dark-mode {
   background-color: #111;
   color: #eee;
