@@ -32,9 +32,28 @@
       </p>
     </section>
     
-    <section class="dashboard">
+    <section class="dashboard" id="dashboard">
       <h2>🗑️ État des Poubelles</h2>
-      <p>Chargement des données...</p>
+      <div class="poubelles-container">
+        <div id="poubelleA" class="poubelle-card">
+          <h3>Poubelle A (Active)</h3>
+          <p>Chargement des données...</p>
+        </div>
+        <div class="poubelle-card inactive">
+          <h3>Poubelle B (Inactive)</h3>
+          <p><strong>Horodatage :</strong> --</p>
+          <p><strong>Distance :</strong> --</p>
+          <p><strong>Remplissage :</strong> --</p>
+          <p><strong>Statut :</strong> Inactive</p>
+        </div>
+        <div class="poubelle-card inactive">
+          <h3>Poubelle C (Inactive)</h3>
+          <p><strong>Horodatage :</strong> --</p>
+          <p><strong>Distance :</strong> --</p>
+          <p><strong>Remplissage :</strong> --</p>
+          <p><strong>Statut :</strong> Inactive</p>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -44,34 +63,53 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      Papa.parse('https://docs.google.com/spreadsheets/d/e/2PACX-1vQgmSKQ1_GhPryIvCFtL6qO7YNy26RY5XY76nQo44i3YMplAssikjoJ6EnEOOuV9OC2trobP0kY8zpB/pub?gid=0&single=true&output=csv', {
+      Papa.parse('https://docs.google.com/spreadsheets/d/13MvKsja2_ccGP92jru7NZzyvQxoNhUW52iIh4QdwR5o/edit?gid=0#gid=0', {
         download: true,
         header: true,
         complete: function(results) {
           const data = results.data;
-          const lastEntry = data[data.length - 1]; // Dernière ligne
-          const container = document.querySelector(".dashboard");
-  
-          container.innerHTML = '<h2>🗑️ État des Poubelles</h2>';
-  
+          const lastEntry = data[data.length - 1];
+          const container = document.getElementById("poubelleA");
+
           if (lastEntry) {
-            container.innerHTML += `
-              <div class="poubelle-card">
-                <h3>Dernière mise à jour</h3>
-                <p><strong>Horodatage :</strong> ${lastEntry.time}</p>
-                <p><strong>Distance :</strong> ${lastEntry.Distance} cm</p>
-                <p><strong>Remplissage :</strong> ${lastEntry.Pourcentage}%</p>
-                <p><strong>Statut :</strong> ${lastEntry.Statut}</p>
-              </div>
+            container.innerHTML = `
+              <h3>Poubelle A (Active)</h3>
+              <p><strong>Horodatage :</strong> ${lastEntry.time}</p>
+              <p><strong>Distance :</strong> ${lastEntry.Distance} cm</p>
+              <p><strong>Remplissage :</strong> ${lastEntry.Pourcentage}%</p>
+              <p><strong>Statut :</strong> ${lastEntry.Statut}</p>
             `;
           } else {
-            container.innerHTML += `<p>Aucune donnée disponible.</p>`;
+            container.innerHTML = `
+              <h3>Poubelle A (Active)</h3>
+              <p>Aucune donnée disponible.</p>
+            `;
           }
         }
       });
     });
   </script>
-  
-  
+
+  <style>
+    .poubelles-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .poubelle-card {
+      flex: 1;
+      min-width: 250px;
+      background-color: #121212;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 10 10 10px rgba(58, 214, 162, 0.1);
+    }
+
+    .poubelle-card.inactive {
+      opacity: 0.6;
+      background-color: #222020;
+    }
+  </style>
 </body>
 </html>
