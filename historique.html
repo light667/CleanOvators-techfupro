@@ -1,55 +1,114 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Historique de Tri</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Historique de la Poubelle Active</title>
+  <style>
+    body {
+      background-color: #1c1c1c;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      color: #00ff99;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #2c2c2c;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #444;
+    }
+  </style>
 </head>
 <body>
+  <h1>Historique de la Poubelle Active</h1>
+  <div id="table-container">Chargement...</div>
 
-  <header>
-    <h1>📊 Historique des Tris Automatiques</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="historique.html">Historique</a>
-      <a href="config.html">Paramètres</a>
-      <a href="login.html">Connexion</a>
-    </nav>
-  </header>
+  <script>
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQgmSKQ1_GhPryIvCFtL6qO7YNy26RY5XY76nQo44i3YMplAssikjoJ6EnEOOuV9OC2trobP0kY8zpB/pub?output=csv";
 
-  <main>
-    <section>
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Type de déchet</th>
-            <th>Confiance (%)</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>2025-04-20 14:35</td>
-            <td>Plastique</td>
-            <td>96.3%</td>
-            <td><img src="img/dechet1.png" alt="Déchet" width="50" /></td>
-          </tr>
-          <tr>
-            <td>2025-04-20 14:36</td>
-            <td>Métal</td>
-            <td>92.1%</td>
-            <td><img src="img/dechet2.png" alt="Déchet" width="50" /></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </main>
+    async function chargerCSV(url) {
+      const response = await fetch(url);
+      const texte = await response.text();
+      return texte;
+    }
 
-  <footer>
-    <p>&copy; 2025 | CleanOvators - Gestion et Tri de dechets</p>
-  </footer>
+    function parserCSV(csv) {
+      const lignes = csv.trim().split("\n");
+      const enTetes = lignes[0].split(",").map(h => h.trim());
+      return lignes.slice(1).map(ligne => {
+        const valeurs = ligne.split(",").map(v => v.trim());
+        const objet = {};
+        enTetes.forEach((cle, index) => {
+          objet[cle] = valeurs[index];
+        });
+        return objet;
+      });
+    }
 
+    function afficherTable(donnees) {
+      const table = document.createElement("table");
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
+
+      ["Temps", "Distance (cm)", "Pourcentage (%)", "Statut"].forEach(titre => {
+        const th = document.createElement("th");
+        th.textContent = titre;
+        headerRow.appendChild(th);
+      });
+
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+      donnees.forEach(d => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${d.time}</td>
+          <td>${d.Distance}</td>
+          <td>${d.Pourcentage}</td>
+          <td>${d.Statut}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      table.appendChild(tbody);
+      document.getElementById("table-container").innerHTML = "";
+      document.getElementById("table-container").appendChild(table);
+    }
+
+    async function afficherHistorique() {
+      try {
+        const csv = await chargerCSV(CSV_URL);
+        const donnees = parserCSV(csv);
+
+        // On considère que "Ok" et "A_VIDER" signifient que la poubelle est active
+        const donneesActives = donnees
+          .filter(d => d.Statut === "OK" || d.Statut === "A_VIDER")
+          .reverse();
+
+
+        if (donneesActives.length === 0) {
+          document.getElementById("table-container").innerHTML = "Aucune poubelle active trouvée.";
+        } else {
+          afficherTable(donneesActives);
+        }
+      } catch (error) {
+        console.error("Erreur lors du chargement :", error);
+        document.getElementById("table-container").innerHTML = "Erreur lors du chargement des données.";
+      }
+    }
+
+    afficherHistorique();
+  </script>
 </body>
 </html>

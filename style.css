@@ -3,6 +3,10 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: #121212;
   color: #fff;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 header {
@@ -141,4 +145,42 @@ ul {
   list-style: square;
   padding-left: 20px;
 }
+.historique-container {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
 
+.poubelle {
+  flex: 1;
+  min-width: 200px;
+  background: #1e1e1e;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.poubelle h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+.historique-tri-categories table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background-color: #2b2b2b;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.historique-tri-categories th,
+.historique-tri-categories td {
+  border: 1px solid #444;
+  padding: 10px;
+  text-align: left;
+}
+
+.historique-tri-categories th {
+  background-color: #3a3a3a;
+}
