@@ -1,63 +1,158 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Connexion - Centre de Contrôle</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion - Centre de Contrôle CleanOvators</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
-      font-family: Arial;
-      background: #2f3542;
+      font-family: 'Lora', serif;
+      background: linear-gradient(135deg, #0e3006, #079d8e);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      overflow: hidden;
     }
     .login-box {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-    input {
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       width: 100%;
-      padding: 10px;
+      max-width: 400px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .login-box h1 {
+      color: #2f3542;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .login-box h2 {
+      color: #4a6078;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 12px;
       margin: 10px 0;
+      border: 2px solid #ddd;
       border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+    .login-box input:focus {
+      outline: none;
+      border-color: #4a6078;
+      background: #f9f9f9;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background: #4a6078;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .login-box button:hover {
+      background: #3a4f60;
+      transform: translateY(-2px);
+    }
+    .login-box button:active {
+      transform: translateY(0);
     }
     .error {
-      color: red;
+      color: #e74c3c;
+      font-size: 14px;
       margin-top: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .error.active {
+      opacity: 1;
+    }
+    @media (max-width: 480px) {
+      .login-box {
+        padding: 20px;
+        margin: 10px;
+      }
+      .login-box h1 {
+        font-size: 24px;
+      }
+      .login-box h2 {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="login-box">
+    <h1>Cette Page est Réservée aux Administrateurs</h1>
+    <h2>Connexion</h2>
+    <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+    <input type="password" id="password" placeholder="Mot de passe" required>
+    <button onclick="checkLogin()">Se connecter</button>
+    <div class="error" id="error-message"></div>
+  </div>
 
-<div class="login-box">
-  <h1>Cette Page est Reservée aux Administrateur</h1>
-  <h2>Connexion</h2>
-  <input type="text" id="username" placeholder="Nom d'utilisateur">
-  <input type="password" id="password" placeholder="Mot de passe">
-  <button onclick="checkLogin()">Se connecter</button>
-  <div class="error" id="error-message"></div>
-  
-</div>
+  <script>
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const errorMessage = document.getElementById("error-message");
 
-<script>
-  function checkLogin() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    function checkLogin() {
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value.trim();
 
-    const correctUsername = "cleanovat";
-    const correctPassword = "667ss35";
+      const correctUsername = "cleanovat";
+      const correctPassword = "667ss35";
 
-    if (username === correctUsername && password === correctPassword) {
-      
-      window.location.href = "controle.html";
-    } else {
-      document.getElementById("error-message").textContent = "Nom d'utilisateur ou mot de passe incorrect.";
+      if (username === correctUsername && password === correctPassword) {
+        // Ajout d'une animation avant redirection
+        errorMessage.textContent = "Connexion réussie ! Redirection...";
+        errorMessage.classList.add("active");
+        setTimeout(() => {
+          window.location.href = "controle.html";
+        }, 1000); // Redirection après 1 seconde
+      } else {
+        errorMessage.textContent = "Nom d'utilisateur ou mot de passe incorrect.";
+        errorMessage.classList.add("active");
+        setTimeout(() => errorMessage.classList.remove("active"), 3000); // Masque après 3 secondes
+      }
     }
-  }
-</script>
 
+    // Validation en temps réel
+    [usernameInput, passwordInput].forEach(input => {
+      input.addEventListener("input", () => {
+        if (errorMessage.classList.contains("active")) {
+          errorMessage.classList.remove("active");
+        }
+      });
+    });
+
+    // Soumission au clic "Entrée"
+    document.addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        checkLogin();
+      }
+    });
+  </script>
 </body>
 </html>
