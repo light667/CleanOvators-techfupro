@@ -4,175 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CleanOvators - Gestion et tri de Déchets</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Lora', serif;
-      color: #faf2f2;
-      background: #000;
-      overflow-x: hidden;
-    }
-    header {
-      position: relative;
-      text-align: left;
-      padding: 20px;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)), url('https://i.pinimg.com/736x/69/aa/1d/69aa1d88b60ce3858557a7e5a7581ad2.jpg') no-repeat center center / cover;
-      height: 100vh;
-      width: 100%;
-      max-width: 100%;
-      backdrop-filter: blur(5px);
-    }
-    .main-title {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      border-radius: 10px;
-    }
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px;
-      max-width: 100%;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-    .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-    .logo h1 {
-      margin: 0 10px;
-      font-size: 24px;
-      color: #fff;
-    }
-    .logo span {
-      color: red;
-      font-size: 14px;
-      padding-left: 20px;
-    }
-    span a {
-      color: #faf2f2;
-      padding-left: 300px;
-      text-decoration: underline;
-    }
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 10px;
-      border-radius: 10px;
-    }
-    .main-content {
-      transition: margin-left 0.5s;
-      padding: 20px;
-    }
-    main {
-      padding: 40px 20px;
-      background: #fff;
-      color: #000;
-    }
-    .poubelles-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .poubelle-card {
-      flex: 1;
-      min-width: 250px;
-      background-color: #121212;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(58, 214, 162, 0.1);
-      color: #fff;
-    }
-    .poubelle-card.inactive {
-      opacity: 0.6;
-      background-color: #222020;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #000;
-      color: #fff;
-    }
-    .contact-section {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 10px;
-      color: #faf2f2;
-      text-align: center;
-    }
-    .contact-section h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-    .contact-section p {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      font-family: 'Lora', serif;
-    }
-    .contact-form button {
-      padding: 10px;
-      background-color: #fff;
-      color: #000;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .contact-form button:hover {
-      background-color: #ddd;
-    }
-  </style>
 </head>
 <body>
   <header>
-    <div class="header-content">
-      <div class="logo">
-        <img src="https://cdn.gamma.app/uu0zcfwvbbdn5cc/generated-images/1gaHypIYvUiDkg6v7u1KG.png" alt="CleanOvators Logo">
-        <h1>CleanOvators</h1>
-        <span><a href="apropos.html">About our initiatives</a></span>
-      </div>
-      <nav>
-        <a href="admin.html">Centre de controle</a>
-      </nav>
-    </div>
-    <div class="main-title">
-      <h1>Turning Waste into Solutions - Smart Tech for a Cleaner Future</h1>
-      <p>Poor waste management leads to pollution, disease, and environmental degradation. Overflowing landfills, open burning, and improper disposal contaminate air, water, and soil — threatening public health and the planet. In many African communities, the lack of efficient waste sorting systems worsens these problems, limiting recycling opportunities and increasing health risks for people living near waste sites.</p>
-    </div>
+    <h1>🌿 CleanOvators</h1>
+    <h3>Nettoyer l'environnement tout en innovant</h3>
+    <nav>
+      <a href="index.html">ACCUEIL</a>
+      <a href="admin.html">CENTRE DE CONTRÔLE</a>
+    </nav>
   </header>
-  <main class="main-content">
+
+  <main>
+    <section class="hero">
+      <h1>Bienvenue sur CleanOvators</h1>
+      <p>Une solution intelligente pour un monde plus propre 🌍</p>
+      <a href="#dashboard" class="btn">Voir l’état des poubelles</a>
+    </section>
+    
+    <section class="apropos">
+      <h2>💡 Notre Mission</h2>
+      <p>
+        CleanOvators vise à révolutionner la gestion des déchets grâce à l'intelligence artificielle.
+        Des poubelles intelligentes aux bras robotiques de tri, nous unissons technologie et écologie.
+      </p>
+    </section>
+    
     <section class="dashboard" id="dashboard">
       <h2>🗑️ État des Poubelles</h2>
       <div class="poubelles-container">
@@ -199,18 +61,7 @@
   </main>
 
   <footer>
-    <div class="contact-section">
-      <h2>Contactez-nous</h2>
-      <p>Email : <a href="mailto:nethaniahdjossou@gmail.com">nethaniahdjossou@gmail.com</a></p>
-      <p>Téléphone : <a href="tel:+22870703111">+228 70703111</a></p>
-      <p>WhatsApp : <a href="https://wa.link/hrpp65">Service client</a></p>
-      <form class="contact-form" onsubmit="sendEmail(event)">
-        <input type="email" placeholder="Votre email" required>
-        <textarea placeholder="Votre message" required></textarea>
-        <button type="submit">Envoyer</button>
-      </form>
-    </div>
-    <p>© 2025 | CleanOvators - Gestion et Tri de déchets</p>
+    <p>&copy; 2025 | CleanOvators - Gestion et Tri de déchets</p>
   </footer>
 
   <script>
@@ -240,21 +91,28 @@
         }
       });
     });
-
-    function sendEmail(event) {
-      event.preventDefault();
-      const email = document.querySelector('.contact-form input').value;
-      const message = document.querySelector('.contact-form textarea').value;
-      const subject = `Contact from ${email}`;
-      const body = `Message: ${message}\n\nEnvoyé par: ${email}`;
-
-      // Simulation d'envoi d'email (ouvre le client email par défaut)
-      window.location.href = `mailto:nethaniahdjossou@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-      // Réinitialisation du formulaire
-      document.querySelector('.contact-form').reset();
-      alert('Message envoyé ! (Vérifiez votre client email pour confirmer)');
-    }
   </script>
+
+  <style>
+    .poubelles-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .poubelle-card {
+      flex: 1;
+      min-width: 250px;
+      background-color: #121212;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 10 10 10px rgba(58, 214, 162, 0.1);
+    }
+
+    .poubelle-card.inactive {
+      opacity: 0.6;
+      background-color: #222020;
+    }
+  </style>
 </body>
 </html>
